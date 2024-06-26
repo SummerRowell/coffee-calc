@@ -50,7 +50,6 @@ function App() {
   return (
     <div id='App'>
     <NavBar></NavBar>
-
       <Container style={containerStyle}>
         <Row style={rowStyle}> Select your brewing method:
             <CoffeeOptionsToggle handleClick={handleClick}></CoffeeOptionsToggle>

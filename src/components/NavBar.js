@@ -2,6 +2,8 @@ import { NavbarBrand } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 function NavBar() {
     return (
@@ -10,7 +12,9 @@ function NavBar() {
                 <NavbarBrand href='/'>Coffee Calculator</NavbarBrand>
                 <Nav>
                     <Nav.Link href='/'>Home</Nav.Link>
-                    <Nav.Link href='/stopwatch'>Stopwatch</Nav.Link>
+                    <LinkContainer to='/stopwatch'>
+                        <Nav.Link>Stopwatch</Nav.Link>
+                    </LinkContainer>
                 </Nav>
             </Container>
         </Navbar>
