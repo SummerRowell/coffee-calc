@@ -1,0 +1,36 @@
+.timer-screen {
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.digits {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2rem;
+    color: #000000;
+}
+ 
+.Timer-Buttons {
+	margin: 3rem 0;
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn-grp {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.Timer {
+    display: 'flex';
+    flex-direction: 'column';
+    justify-content: 'center';
+    align-items: 'center'
+}
