@@ -1,12 +1,13 @@
 import React, { useState, useEffect }  from 'react';
-import TimerButtons from './TimerButtons';
-import TimerScreen from './TimerScreen';
-import './Timer.css';
-import { Container, Row, Card, Button }from 'react-bootstrap';
+import './Stopwatch.css'
+import StopwatchButtons from './StopwatchButtons';
+import { Container, Row, Card, Col }from 'react-bootstrap';
 import CoffeeSprite from '../animation/Coffee';
+import NavBar from '../NavBar';
 
 
-const Timer = ({frameIndex, setFrameIndex, displayTimer, setDisplayTimer}) => {
+const Stopwatch = () => {
+    const [frameIndex, setFrameIndex] = useState(0);
     const [isActive, setActive] = useState(false);
     const [isPaused, setPaused] = useState(true);
     const [time, setTime] = useState(0);
@@ -57,29 +58,29 @@ const Timer = ({frameIndex, setFrameIndex, displayTimer, setDisplayTimer}) => {
 
     return (
         <Card>
-        <Container>
+        <NavBar></NavBar>
+        <Container className='Stopwatch'>
             <Row>
-            <Button variant='primary' onClick={() => setDisplayTimer(!displayTimer)}>
-                {displayTimer ? 'Hide Timer' : 'Show Timer'}
-            </Button>
-            {displayTimer && 
-                <>
-                    <TimerScreen time={time} />
+                <Row className='stopwatch-screen'>
+                    <Col className='digits'>
+                        {("0" + Math.floor((time / 60000) % 60)).slice(-2)}:
+                        {("0" + Math.floor((time / 1000) % 60)).slice(-2)}:
+                        {("0" + ((time / 10) % 100)).slice(-2)}
+                    </Col>
+                </Row>
+                <Row className="justify-content-center align-items-center">
                     <CoffeeSprite index={frameIndex} />
-                    <TimerButtons
-                            isActive={isActive}
-                            isPaused={isPaused}
-                            handleStart={handleStart}
-                            handlePauseResume={handlePauseResume}
-                            handleReset={handleReset} />
-                </>
-                
-            }
+                </Row>
+                <StopwatchButtons
+                        isActive={isActive}
+                        isPaused={isPaused}
+                        handleStart={handleStart}
+                        handlePauseResume={handlePauseResume}
+                        handleReset={handleReset} />
             </Row>
         </Container>
-        </Card>
-
+        </Card>  
     )
 }
     
-export default Timer;    
+export default Stopwatch;    

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Coffee.css';
+import Image from 'react-bootstrap/Image';
 
 const CoffeeSprite = ({index}) => {
 

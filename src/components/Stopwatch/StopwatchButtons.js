@@ -1,10 +1,9 @@
 import React from 'react';
-import './Timer.css';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 
-const TimerButtons = ({ isActive, isPaused, handleStart, handleReset, handlePauseResume }) => {
+const StopwatchButtons = ({ isActive, isPaused, handleStart, handleReset, handlePauseResume }) => {
     
     const StartButton = (
         <Button onClick={handleStart}>
@@ -24,10 +23,10 @@ const TimerButtons = ({ isActive, isPaused, handleStart, handleReset, handlePaus
     );
 
     return (
-        <div className='Timer-Buttons'>
+        <div className='Stopwatch-Buttons'>
             {isActive ? ActiveButtons : StartButton}
         </div>
     );
 }
 
-export default TimerButtons;
+export default StopwatchButtons;

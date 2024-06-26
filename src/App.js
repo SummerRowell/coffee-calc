@@ -1,26 +1,24 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { coffeeOptions } from './components/CoffeeOptions';
-import Timer from './components/Timer/Timer';
 import CoffeeOptionsToggle from './components/CoffeeOptionsToggle';
 import RatioSelector from './components/RatioSelector';
 import CoffeeForm from './components/CoffeeForm';
 import Grind from './components/Grind';
 import BrewTime from './components/BrewTime';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+import Results from './components/Results';
+import NavBar from './components/NavBar';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Results from './components/Results';
+
 
 function App() {
-  const [frameIndex, setFrameIndex] = useState(0);
   const [index, setIndex] = useState(0);
 
   function handleClick(index) {
     setIndex(index);
-    // setSelected(true);
   }
 
   let brewType = coffeeOptions[index];
@@ -28,7 +26,6 @@ function App() {
   const [ratio, setRatio] = useState(brewType.standard);
   const [size, setSize] = useState(1);
   const [sizeType, setSizeType] = useState("cups");
-  const [displayTimer, setDisplayTimer] = useState(false);
 
   useEffect(() => {
     console.log(brewType.type)
@@ -42,39 +39,29 @@ function App() {
     flexDirection: 'column',
     justifyContent: 'space-around;',
     alignItems: 'center',
-    alignContent: 'around'
+    alignContent: 'around',
+    padding: '5rem 5rem 5rem 5rem'
 }
 
-  return (
-      <Container style={containerStyle}>
-        <Row>
-          <Col>
-            <Card>
-              <Card.Header>What brewing method will you be using?</Card.Header>
-              <Card.Body>
-                <CoffeeOptionsToggle handleClick={handleClick}></CoffeeOptionsToggle>
-              </Card.Body>
-            </Card>
-            </Col>
-            <Col>
-            <Card>
-              <Card.Header>How strong would you like your coffee?</Card.Header>
-              <Card.Body>
-                  <RatioSelector brewType={brewType} setRatio={setRatio}></RatioSelector>
-              </Card.Body>
-            </Card>
-            </Col>
-            <Col>
+  const rowStyle = {
+    padding: '1rem 1rem 1rem 1rem',
+  }
 
-            <Card>
-              <Card.Header>How much coffee would you like to brew?</Card.Header>
-              <Card.Body>
+  return (
+    <div id='App'>
+    <NavBar></NavBar>
+
+      <Container style={containerStyle}>
+        <Row style={rowStyle}> Select your brewing method:
+            <CoffeeOptionsToggle handleClick={handleClick}></CoffeeOptionsToggle>
+          </Row>
+          <Row style={rowStyle}> Select your preferred strength:
+              <RatioSelector brewType={brewType} setRatio={setRatio}></RatioSelector>
+              </Row>
+              <Row style={rowStyle}>Enter the amount of coffee you will be brewing:
                 <CoffeeForm size={size} setSize={setSize} sizeType={sizeType} setSizeType={setSizeType} />
-              </Card.Body>
-            </Card>
-            </Col>
-        </Row>
-        <Row>
+              </Row>
+        <Row style={rowStyle}>
           <Col>
           <Grind grindSize={brewType.grind} brewMethod={brewType.type}></Grind>
           </Col>
@@ -85,14 +72,9 @@ function App() {
           <BrewTime brewType={brewType}></BrewTime>
           </Col>
         </Row>
-        <Row>
-            <Card>
-              <Card.Body>
-                <Timer frameIndex={frameIndex} setFrameIndex={setFrameIndex} displayTimer={displayTimer} setDisplayTimer={setDisplayTimer}/>
-              </Card.Body>
-            </Card>
-        </Row>
       </Container>
+      </div>
+
   );
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
+import { Link } from "react-router-dom";
+
 
 const BrewTime = ( {brewType} ) => {
     return (
@@ -10,6 +12,7 @@ const BrewTime = ( {brewType} ) => {
                 </Card.Title>
                 <Card.Text>
                     {brewType.time}
+                    . Use our <Link to='/stopwatch'>stopwatch</Link> to time your brew.
                 </Card.Text>
             </Card.Body>
         </Card>

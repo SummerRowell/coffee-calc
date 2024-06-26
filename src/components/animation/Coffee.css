@@ -1,5 +1,9 @@
 .coffee-sprite {
     background-image: url("./coffee-sprite.png");
     background-repeat: no-repeat;
-    display: inline-block;
+    border: none;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

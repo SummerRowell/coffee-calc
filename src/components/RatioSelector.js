@@ -3,7 +3,7 @@ import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 const RatioSelector = ({ brewType, setRatio }) => {
   return (
-    <ToggleButtonGroup type='radio' name='ratioOptions' className='mb-2'>
+    <ToggleButtonGroup type='radio' name='ratioOptions' className='mb-2' defaultValue={brewType.standard}>
       <ToggleButton id='tbg-radio-1' value={brewType.mild} onChange={(e) => setRatio(e.target.value)}>
         Mild 1:{brewType.mild}
       </ToggleButton>
